@@ -1,0 +1,131 @@
+:root{
+    --dark-color: #292f2e;
+    --dark-color-shadow: rgba(41, 47, 46, .5);
+    --color1: #9e9e9e;
+    --color2: #d9d9d9;
+    --color2-variant: #e4e0e0;
+    --color3: #008040;
+    --color3-variant: #40a070;
+}
+
+* {
+    font-family: "Inter";
+}
+
+/* Wrapper */
+.wrapper{
+    background-color: var(--dark-color);
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+/* Menu lateral */
+.menuEsquerdo{
+    height: 100vh;
+    width: 20vw;
+    position: fixed;
+    transform: translate(-100%, 0);
+    background-color: var(--color1);
+    box-shadow: inset -6px 0 4px -5px var(--dark-color-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .7s;
+    z-index: 2;
+}
+
+#btnFecharMenu{
+    font-size: 1.75rem;
+}
+
+.imagemUsuario {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--color2);
+    position: relative;
+    border: 2px solid var(--dark-color);
+}
+
+.imagemUsuario i {
+    display: inline-block;
+    width: 100%;
+    font-size: 6rem;
+    text-align: center;
+}
+
+    /* Linhas menu lateral */
+    .linhaMenu {
+        border-bottom: 1px solid var(--dark-color);
+        box-sizing: border-box;
+        width: 100%;
+        color: var(--dark-color);
+        background-color: var(--color2);
+        cursor: pointer;
+        height: 50px;
+        box-shadow: inset -6px 0 4px -5px var(--dark-color-shadow);
+    }
+    
+    .linhaMenu:hover {
+        background-color: white;
+        color: var(--color3);
+    }
+
+    .linhaMenu:empty {
+        background-color: transparent;
+        cursor: default;
+        border-bottom: none;
+    }
+
+    .primeiraLinhaMenu {
+        border-top: 1px solid var(--dark-color);
+    }
+
+/* Cabecalho */
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: var(--color1);
+}
+
+.botaoMenu{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: 2rem;
+}
+
+/* Modais */
+.modal-header {
+    color: var(--dark-color);
+    border-bottom-color: var(--dark-color);
+    background-color: var(--color2);
+}
+
+.modal-body {
+    background-color: var(--color1);
+}
+
+.modal-footer {
+    color: var(--dark-color);
+    border-top-color: var(--dark-color);
+    background-color: var(--color2);
+}
+
+/* Elementos avulsos*/
+.btn-primary-custom {
+    background-color: var(--color3);
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--color3-variant);
+    color: white;
+}
