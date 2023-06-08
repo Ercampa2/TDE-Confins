@@ -20,6 +20,7 @@
     <script defer src="bibliotecas/js/masks.jquery.js"></script>
     <script defer src="bibliotecas/js/crypto.js"></script>
     <script defer src="bibliotecas/js/echarts.js"></script>
+    <script defer src="js/utils.js"></script>
     <script defer src="js/home.js"></script>
 </head>
 <body>
@@ -28,7 +29,7 @@
         <div class="menuEsquerdo" id="menuEsquerdo">
             
             <div>
-                <!-- Botão para fechar o menu lateral -->
+                <!-- BotÃ£o para fechar o menu lateral -->
                 <div class="row mx-0">
                     <div class="col-10"></div>
                     <div class="col-1">
@@ -37,7 +38,7 @@
                     <div class="col-1"></div>
                 </div>
 
-                <!-- Imagem do usuário -->
+                <!-- Imagem do usuï¿½rio -->
                 <div class="row py-3 mt-1 mx-0">
                     <div class="col-3"></div>
                     <div class="col-6">
@@ -88,9 +89,40 @@
             </div>
         </div>
 
-        <!-- Cabeçalho -->
+        <!-- Cabeï¿½alho -->
         <div class="header">
             <button class="botaoMenu" id="botaoMenu"><i class="bi bi-list"></i></button>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body pb-0">
+                        <div  class="graficos" id="graficoInicio"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 text-white">https://brapi.dev/api/v2/currency?currency=USD-BRL%2CEUR-USD</div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-2"></div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        VALOR
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        VALOR2
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+
         </div>
     </div>
     <!-- Modais -->
@@ -129,7 +161,7 @@
                 <div class="modal-body">
                     <form id="formAddGasto">
                         <select class="form-control mb-2" name="categoriaGasto" id="categoriaGasto">
-                            <option value="" selected disabled>--Selecione uma categoria--</option>
+                            
                         </select>
                         <input type="text" class="form-control" placeholder="Novo gasto..." id="valorGasto" name="valor" required>
                     </form>
@@ -140,6 +172,20 @@
             </div>
         </div>
     </div>
-</div>
+
+    <div class="modal fade" id="modalCategorias" tabindex="-1" aria-labelledby="modalCategorias" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="cabecalhoModalCategorias">Gastos da categoria</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="corpoModalCategorias">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
