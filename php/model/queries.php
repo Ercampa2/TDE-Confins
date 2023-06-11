@@ -98,7 +98,7 @@
         $categoria = htmlspecialchars($categoria);
 
         $query = 
-        "SELECT valor, DATE_FORMAT(data, '%d/%m/%Y') as data
+        "SELECT valor, data
         FROM gastos
         WHERE categoria = ?
         AND MONTH(data) = MONTH(CURDATE())

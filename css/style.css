@@ -161,8 +161,24 @@ html, body {
     background: var(--dark-color-shadow);
 }
 
-.circuloCor{ 
-    position: relative;
-    height: 1em;
-    width: 1em;
+/* Noticias */
+.headerNoticias {
+    background-color: var(--color2-variant);
+}
+
+.valorMoeda {
+    background-color: white;
+    color: var(--color3);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/*DataTables*/
+#tabelaGastos {
+    width: 100%;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: var(--color3);
+    border-color: var(--color3);
 }
