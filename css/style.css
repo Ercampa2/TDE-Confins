@@ -136,6 +136,13 @@ html, body {
     color: white;
 }
 
+.dot{
+    width: .6em;
+    height: .6em; 
+    display: inline-block; 
+    border-radius: 50%;
+}
+
 /* Gráficos */
 
 .graficos {
@@ -174,7 +181,7 @@ html, body {
 }
 
 /*DataTables*/
-#tabelaGastos {
+#tabelaGastos, #tabelaReceitas {
     width: 100%;
 }
 

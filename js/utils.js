@@ -9,7 +9,7 @@ function formatarReal(valor) {
 }
 
 function formatarData(date) {
-    return Intl.DateTimeFormat("pt-br", {dateStyle: "short"}).format(date); 
+    return Intl.DateTimeFormat("pt-BR", {dateStyle: "short"}).format(date); 
 } 
 
 function subtrairMes(data, qtd) {

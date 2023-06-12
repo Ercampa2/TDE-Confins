@@ -11,17 +11,19 @@
     <title>Confin$</title>
 
     <link rel="stylesheet" href="bibliotecas/css/bootstrap.css">
-    <link rel="stylesheet" href="bibliotecas/css/datatables.css">
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <!-- <link rel="stylesheet" href="bibliotecas/css/datatables.css"> -->
     <!-- <link rel="stylesheet" href="bibliotecas/css/bootstrap-icons.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <script defer src="bibliotecas/js/bootstrap.js"></script>
     <script defer src="bibliotecas/js/jquery.js"></script>
+    <script defer src="bibliotecas/js/bootstrap.js"></script>
     <script defer src="bibliotecas/js/masks.jquery.js"></script>
     <script defer src="bibliotecas/js/crypto.js"></script>
     <script defer src="bibliotecas/js/echarts.js"></script>
-    <script defer src="bibliotecas/js/datatables.js"></script>
+    <!-- <script defer src="bibliotecas/js/datatables.js"></script> -->
+    <script defer src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
     <script defer src="js/utils.js"></script>
     <script defer src="js/home.js"></script>
 </head>
@@ -57,21 +59,21 @@
                     <div class="col-11 text-end">Adicionar Gastos</div>
                 </div>
                 
-                <!-- <div class="row mx-0 fs-2 linhaMenu" id="addEntradas">
+                <div class="row mx-0 fs-2 linhaMenu" id="addEntradas" role="button" data-bs-toggle="modal" data-bs-target="#modalAddReceitas">
                     <div class="col-1"><i class="bi bi-plus-lg"></i></div>
-                    <div class="col-11 text-end">Adicionar entradas</div>
-                </div> -->
-                
-                <div class="row mx-0 fs-2 linhaMenu" id="addCartao">
-                    <div class="col-1"><i class="bi bi-credit-card"></i></div>
-                    <div class="col-11 text-end">Adicionar Cart&atilde;o</div>
+                    <div class="col-11 text-end">Adicionar receitas</div>
+                </div>
+
+                <div class="row mx-0 fs-2 linhaMenu" id="entradas" role="button" data-bs-toggle="modal" data-bs-target="#modalReceitas">
+                    <div class="col-1"><i class="bi bi-cash-stack"></i></div>
+                    <div class="col-11 text-end">Receitas do m&ecirc;s</div>
                 </div>
                 
                 <div class="row mx-0 fs-2 linhaMenu" id="addCategoria" role="button" data-bs-toggle="modal" data-bs-target="#modalAddCategoria">
                     <div class="col-1"><i class="bi bi-boxes"></i></div>
                     <div class="col-11 text-end">Adicionar Categoria</div>
                 </div>
-                <div class="row mx-0 fs-2 linhaMenu" id="editCategoria" role="button" data-bs-toggle="modal" data-bs-target="#">
+                <div class="row mx-0 fs-2 linhaMenu" id="editCategoria" role="button" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
                     <div class="col-1"><i class="bi bi-pencil"></i></div>
                     <div class="col-11 text-end">Editar Categorias</div>
                 </div>
@@ -84,47 +86,50 @@
                     <div class="col-11 text-end">Not&iacute;cias</div>
                 </div>
                 
-                <div class="row mx-0 fs-2 linhaMenu">
+                <!-- <div class="row mx-0 fs-2 linhaMenu">
                     <div class="col-1"><i class="bi bi-gear"></i></div>
                     <div class="col-11 text-end">Configura&ccedil;&otilde;es</div>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <!-- Cabe�alho -->
         <div class="header">
             <button class="botaoMenu" id="botaoMenu"><i class="bi bi-list"></i></button>
+            <img style="position: relative; float:right; height: 100%" src="img/logo.png" alt="">
         </div>
         <div class="row mt-5 pt-5">
             <div class="col-3"></div>
             <div class="col-6">
                 <div class="card">
                     <div class="card-body pb-0">
-                        <div  class="graficos" id="graficoInicio"></div>
+                        <div class="graficos" id="graficoInicio"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-3 text-white"></div>
+            <div class="col-3"></div>
         </div>
         <div class="row mt-5 pt-5">
-            <div class="col-2"></div>
-            <div class="col-3">
+            <div class="col-3"></div>
+            <div class="col-6">
                 <div class="card">
-                    <div class="card-body">
-                        VALOR
+                    <div class="card-body pb-0">
+                        <div class="graficos" id="graficoMesesSaida"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-2"></div>
-            <div class="col-3">
+            <div class="col-3"></div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-3"></div>
+            <div class="col-6">
                 <div class="card">
-                    <div class="card-body">
-                        VALOR2
+                    <div class="card-body pb-0">
+                        <div class="graficos" id="graficoMesesEntrada"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-2"></div>
-
+            <div class="col-3"></div>
         </div>
     </div>
     <!-- Modais -->
@@ -149,6 +154,55 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" form="formAddCategoria" class="btn btn-primary-custom fw-bold">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal info receitas -->
+    <div class="modal fade" id="modalReceitas" tabindex="-1" aria-labelledby="modalReceitas" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="exampleModalLabel">Receitas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabelaReceitas">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Valor
+                                </th>
+                                <th>
+                                    Data
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="formAddEntrada" class="btn btn-primary-custom fw-bold">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalAddReceitas" tabindex="-1" aria-labelledby="modalAddReceitas" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="exampleModalLabel">Adicionar entrada</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAddEntrada">
+                        <input type="text" id="valorEntrada" class="form-control" placeholder="Nova entrada..." name="valor" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="formAddEntrada" class="btn btn-primary-custom fw-bold">Adicionar</button>
                 </div>
             </div>
         </div>
@@ -283,6 +337,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Modal editar categoria -->
     <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategorias" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -292,8 +347,62 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="corpoModalCategorias">
+                    <form id="editcaoCategoria">
+                        <select name="categoria" class="form-control" id="categoriasEdicao"></select>
+                        <div class="input-group mt-3">
+                            <div class="input-group-text">
+                                <input type="color" class="form-check-input" name="cor" id="editarCor" required>
+                            </div>
+                            <input type="text" class="form-control" id="editarNome" name="novoNome">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary-custom" type="submit" form="editcaoCategoria">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal editar gasto -->
+    <div class="modal fade" id="modalEditarGasto" tabindex="-1" aria-labelledby="modalEditarGasto" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header fs-4 fw-bold">
+                    Edição de gastos
+                </div>
+                <div class="modal-body" id="corpoModalCategorias">
+                    <form id="editarGasto">
+                        <select class="form-control mb-2" id="categoriaEdicaoGastos" name="categoria"></select>
+                        <input type="text" class="form-control" id="valorEdicaoGastos" name="valor" required>
+                        <input type="hidden" id="idEdicaoGastos" name="id" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary-custom" type="submit" form="editarGasto">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal editar entrada -->
+    <div class="modal fade" id="modalEditarReceita" tabindex="-1" aria-labelledby="modalEditarReceita" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header fs-4 fw-bold">
+                    Edição de receita
+                </div>
+                <div class="modal-body" id="corpoModalCategorias">
+                    <form id="editarReceita">
+                        <input type="text" class="form-control" id="valorEdicaoReceita" name="valor" required>
+                        <input type="hidden" id="idEdicaoReceita" name="id" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary-custom" type="submit" form="editarReceita">Salvar</button>
                 </div>
             </div>
         </div>

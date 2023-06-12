@@ -1,0 +1,1 @@
+$("#btn-entrar").on("click", e => window.location = "./")
