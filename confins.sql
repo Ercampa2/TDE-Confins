@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Jun-2023 às 04:42
+-- Generation Time: 13-Jun-2023 às 06:19
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.3
 
@@ -42,7 +42,9 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id`, `id_usuario`, `nome`, `cor`, `limite`) VALUES
 (2, 2, 'Transporte', '#db8585', 0),
-(3, 2, 'AlimentaÃ§Ã£o', '#d297d3', 0);
+(3, 2, 'AlimentaÃ§Ã£o', '#d297d3', 0),
+(4, 2, 'Estudos', '#d79056', 0),
+(5, 2, 'SaÃºde', '#93b5ec', 0);
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,12 @@ INSERT INTO `gastos` (`id`, `id_usuario`, `data`, `valor`, `categoria`) VALUES
 (10, 2, '2023-06-11 15:49:04', 200, 2),
 (11, 2, '2023-05-11 17:49:33', 0.05, 2),
 (12, 2, '2023-06-11 21:56:47', 0.16, 3),
-(13, 2, '2023-06-11 21:57:42', 5, 2);
+(13, 2, '2023-06-11 21:57:42', 5, 2),
+(14, 2, '2023-06-13 00:21:15', 5000, 4),
+(15, 2, '2023-06-13 00:21:49', 250, 5),
+(16, 2, '2023-05-19 00:00:00', 2500, 2),
+(17, 2, '2023-05-19 00:00:00', 2500, 2),
+(18, 2, '2023-04-19 00:00:00', 2900, 3);
 
 -- --------------------------------------------------------
 
@@ -95,7 +102,12 @@ CREATE TABLE `receitas` (
 
 INSERT INTO `receitas` (`id`, `valor`, `id_usuario`, `data`) VALUES
 (1, 500, 2, '2023-06-11 22:40:53'),
-(4, 100, 2, '2023-06-11 23:22:56');
+(4, 100.5, 2, '2023-06-11 23:22:56'),
+(5, 2500, 2, '2023-05-10 00:00:00'),
+(6, 3000, 2, '2023-04-21 00:00:00'),
+(7, 2500, 2, '2023-05-10 00:00:00'),
+(8, 3000, 2, '2023-04-21 00:00:00'),
+(9, 2790, 2, '2023-03-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -152,19 +164,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gastos`
 --
 ALTER TABLE `gastos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `receitas`
 --
 ALTER TABLE `receitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
