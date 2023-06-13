@@ -6,11 +6,18 @@ atualizarGraficosMeses();
 var colSettings = [
     { 
         data: "valor",
-        _: "valorDesformatado"
+        type: "num",
+        render: {
+            sort: "valorDesformatado",
+            _: "valor",
+        }
     },
     {
         data: "data",
-        _: "dataDesformatada",
+        render: {
+            sort: "dataDesformatada",
+            _: "data",
+        }
     },
     {
         data: "btnEditar",
@@ -220,12 +227,10 @@ var tabelaReceitas = $("#tabelaReceitas").DataTable({
             tabelaReceitas.rows().remove();
             res.valores.forEach(elem => {
                 tabelaReceitas.row.add({
-                    "valor": formatarReal(elem.valor),
-                    "data": formatarData(new Date(elem.data)),
+                    "valor": {valor: formatarReal(elem.valor), valorDesformatado: elem.valor},
+                    "data": {data: formatarData(new Date(elem.data)), dataDesformatada: elem.data},
                     "btnEditar": `<button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#modalEditarReceita" data-id="${elem.id}"><i class="bi bi-pencil"></i></button>`,
                     "btnExcluir": `<button class="btn btn-primary-custom" onclick="excluirReceita(${elem.id})"><i class="bi bi-trash"></i></button>`,
-                    valorDesformatado: elem.valor,
-                    dataDesformatada: elem.data,
                 });
             })
             tabelaReceitas.draw();
@@ -321,14 +326,11 @@ function abrirModalCategorias(event) {
         
         tabelaGastos.rows().remove();
         res.gastos.valores.forEach(elem => {
-            console.log(elem.valor);
             tabelaGastos.row.add({
-                "valor": formatarReal(elem.valor),
-                "data": formatarData(new Date(elem.data)),
+                "valor": {valor: formatarReal(elem.valor), valorDesformatado: elem.valor},
+                "data": {data: formatarData(new Date(elem.data)), dataDesformatada: elem.data},
                 "btnEditar": `<button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#modalEditarGasto" data-id="${elem.id}"><i class="bi bi-pencil"></i></button>`,
                 "btnExcluir": `<button class="btn btn-primary-custom" onclick="excluirGasto(${elem.id})"><i class="bi bi-trash"></i></button>`,
-                valorDesformatado: elem.valor,
-                dataDesformatada: elem.data,
             });
         })
         tabelaGastos.draw();
@@ -452,7 +454,7 @@ function atualizarNoticias() {
     
     fetch(`https://brapi.dev/api/v2/prime-rate?country=brazil&historical=false&start=${dataEncoded}&end=${dataEncoded}&sortBy=date&sortOrder=desc`)
     .then(res => res.json())
-    .then(res => $("#valorSelic").text(`${res["prime-rate"][0].value} %`));
+    .then(res => $("#valorSelic").text(`${res["prime-rate"][0].value.replace(".", ",")} %`));
     
     //BTC
     fetch("https://brapi.dev/api/v2/crypto?coin=BTC&currency=BRL")

@@ -28,7 +28,7 @@
     <script defer src="js/home.js"></script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper pb-5">
 
         <div class="menuEsquerdo" id="menuEsquerdo">
             
